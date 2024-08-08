@@ -57,3 +57,30 @@ function reveseString(str){
 }
 console.log(reveseString(text));
 
+//find missing numbers:
+const number = [1,2,3,4,6,7];
+function missingNumber(arr){
+    arr.sort((a,b)=>a-b);
+for(let i=0;i<arr.length;i++){
+  if(arr[i]!==i+1){
+    return i+1
+  }  
+}
+return arr.length+1;
+}
+console.log(missingNumber(number))
+
+
+//palindrome or not:
+function palindrome(str){
+    return str === str.split('').reverse().join('');
+}
+let string = "racecar"
+console.log(palindrome(string));
+
+//sum of array
+const sum = [1,3,5,6,8]
+function sumArray(arr){
+    return arr.reduce((sum,num)=>sum+num)
+}
+console.log(sumArray(sum));
