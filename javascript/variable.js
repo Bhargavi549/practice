@@ -55,3 +55,5 @@ console.log(obj)
 console.log(a.length)
 
 console.log(Object.values(obj))
+console.log(Object.keys(obj))
+console.log(Object.keys(obj).length)
