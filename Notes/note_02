@@ -1,0 +1,24 @@
+pacakgeJson: json- javascript object notation
+           files holds the meta data about particular project. 
+
+npm : node package manages installing and managing all the packages in nodejs  
+
+dotenv: stores apikeys, passwords and other sensitive data
+
+gitignore: it can ignores the files.
+
+nodemon: any changes in the code automatically restart server perfect for development.
+
+git: used for open source, it trakes changes made to files.
+
+dependencies: It contains the packages which we used in projcet(dev and prod),npm i package_name
+devDependencies: It contains the packages but which we can use in dev and local only not in PROD
+devDependenciess: Need for local development and testing.(npm i package_name --save-dev)
+
+cors: cross origin resource sharing is the browser security feature protects user data from  unautherized access.
+
+purpose of module export: used to encapsulate all the related code into a single unit of code.
+
+Library: library which is collections of pre-written functions or methods. we can use as we need.
+
+Framework: Framework skelton of particular application, we can write the code into it, and framework calls our code. template

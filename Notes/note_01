@@ -1,0 +1,12 @@
+javascript :  js is a syncronous single threaded-->one thing do at a time with specific order
+             used for creating web application, used in both client and server side applications
+
+NodeJs: nodejs is avery popular scripting language, 
+        used for creating serverside web application, it is an entity runs in v8 engine
+        using js as the primary scripting language
+
+single threaded:  nodejs is a single threaded one thing can do at a time
+                  that supports asyncronous processing and ehich is highly scable and high performance to application
+
+security implimentations: error handling protocole
+                          authentication pipeline
