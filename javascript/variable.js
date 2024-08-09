@@ -39,3 +39,19 @@ function exampleVar() {
   
   // let we can re-assign, const we cannpt re-assgined
   // but arr, obj we add/remove/change for const
+
+//   const example -> re assinged
+
+const a = [10, 20]
+a.push(30)
+console.log(a)
+a.pop()
+console.log(a)
+
+const obj = {name: "test", age: 10}
+obj.name = "hello"
+console.log(obj)
+
+console.log(a.length)
+
+console.log(Object.values(obj))
