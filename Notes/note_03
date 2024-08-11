@@ -2,11 +2,11 @@
 
 // blocked scope : variable accesesed inside the block is called blocked scope.
 
-// let: let is an blocked scope variable inside block where defined.
+// let: let is an blocked scope variable.
 // var: var is an global scope thought the function declared.
-// const: onces declare variable using let and var we can reassign, using const we can not re assign.
+// onces declare variable using let and var we can reassign, using const we can not re assign.
 
-function varscope (){
+function varScope (){
     var a = 1;
     if(true){
         var a = 3;
@@ -14,10 +14,10 @@ function varscope (){
     }
     console.log(a);
 }
-varscope();
+varScope();
 
 
-function letscope(){
+function letScope(){
     let a=2;
     if(true){
         let a= 1;
@@ -25,7 +25,7 @@ function letscope(){
     }
     console.log(a);
 }
-letscope();
+letScope();
 
 const x = 20;
 console.log(x);
