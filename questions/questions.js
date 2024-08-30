@@ -29,7 +29,6 @@ Node js quesitons after this question try to implement CRUD Operations
 29. How do you manage sessions in an Express.js application?
 30. What is the domain module in Node.js, and why is it deprecated?
 31. How do you use the eventEmitter class in Node.js?
-32. What is the zlib module in Node.js, and how is it used for compression?
 33. How do you set up a RESTful API in Node.js?
 34. What is the purpose of the url module in Node.js?
 35. How do you handle cross-origin requests in a Node.js application?
