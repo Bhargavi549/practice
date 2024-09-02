@@ -213,11 +213,261 @@ const str7 = num7.toString();
 console.log(str7); // Outputs: "42"
 
 // 41. What is NaN?
+//NaN stands for "Not-a-Number" and is a special value in JavaScript 
+console.log(typeof NaN); // "number"
+//Common Causes of NaN:Invalid Mathematical Operations
+console.log(0 / 0); // NaN
+console.log(Math.sqrt(-1)); // NaN
+
 // 42. How do you check if a variable is NaN?
+
+
+
 // 43. What is Infinity in JavaScript?
-// 44. What is a Promise in JavaScript?
+//In JavaScript, Infinity is a special numeric value that represents positive infinity. It is a property of the global Number object and is typically used to represent values that exceed the upper limit of JavaScript's number range. There's also -Infinity, which represents negative infinity.
+//Positive Infinity (Infinity): Represents a value that is greater than any other number.
+console.log(Infinity > 1e308); // true
+//Negative Infinity (-Infinity): Represents a value that is less than any other number.
+console.log(-Infinity < -1e308); // true
+//Infinity Occur
+console.log(1 / 0); // Infinity
+
+/*44. What is a Promise in JavaScript?
+it manging asyncronous operations and handels callback hell and unreachable code. 
+States of a Promise: A Promise has three possible states:
+Pending: The initial state, neither fulfilled nor rejected.
+Fulfilled: The operation completed successfully.
+Rejected: The operation failed.
+Creating a Promise: 
+A Promise is created using the Promise constructor, which takes a function (known as the executor) with two arguments: resolve and reject.
+resolve(value) is called when the operation is successful.
+reject(reason) is called when the operation fails */
+const myPromise = new Promise((resolve, reject) => {
+    let success = true; // Simulating an operation
+
+    if (success) {
+        resolve("Operation was successful");
+    } else {
+        reject("Operation failed");
+    }
+});
+//handel promises
+myPromise
+    .then(
+        (result) => {
+            console.log(result); // "Operation was successful"
+        },
+        (error) => {
+            console.log(error); // "Operation failed"
+        }
+    );
+
 // 45. How do you create a Promise in JavaScript?
-// 46. What is async and await in JavaScript?
+const fetchData = new Promise((resolve, reject) => {
+    const success = true; // Simulating an operation's outcome
+
+    setTimeout(() => {
+        if (success) {
+            resolve("Data fetched successfully!");
+        } else {
+            reject("Error: Data fetch failed.");
+        }
+    }, 2000); // Simulate a 2-second delay
+});
+
+fetchData
+    .then((result) => {
+        console.log(result); // "Data fetched successfully!" (after 2 seconds)
+    })
+    .catch((error) => {
+        console.error(error); // "Error: Data fetch failed." (if success was false)
+    });
+
+/* 46. What is async and await in JavaScript?
+async Function: A function that returns a Promise. It allows the use of await inside.
+await Keyword: Pauses execution of the async function, waiting for a Promise to resolve or reject.
+Error Handling: Use try...catch within an async function to handle errors.*/
+function fetchData() {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve("Data fetched after 2 seconds");
+        }, 2000);
+    });
+}
+
+async function displayData() {
+    console.log("Fetching data...");
+    const data = await fetchData(); // Waits until fetchData resolves
+    console.log(data); // "Data fetched after 2 seconds"
+}
+
+displayData();
+
 // 47. How do you use JSON in JavaScript?
+//JSON is commonly used in web development for data exchange between a server and client, and for storing data in the browser. It’s a fundamental part of working with modern web applications.
+
 // 48. What is the JSON.stringify method?
+// JSON.stringify(): Converts a JavaScript object into a JSON string.
+const person = {
+    name: "John",
+    age: 30,
+    city: "New York"
+};
+const jsonString = JSON.stringify(person);
+console.log(jsonString);
+// Output: '{"name":"John","age":30,"city":"New York"}'
+
 // 49. What is the JSON.parse method?
+// JSON.parse(): Converts a JSON string into a JavaScript object.
+const jsonStrings = '{"name": "John", "age": 30, "city": "New York"}';
+const jsonObject = JSON.parse(jsonStrings);
+
+console.log(jsonObject.name); // "John"
+console.log(jsonObject.age);  // 30
+
+
+// 50. How do you use localStorage in JavaScript?
+// 51. What is the difference between localStorage and sessionStorage?
+
+// 52. How do you check the length of a string in JavaScript?
+const string = "hello";
+const stringLength = string.length
+console.log(stringLength);
+
+// 53. How do you split a string in JavaScript?
+const word = "hello world";
+const splitWord = word.split("");
+console.log(splitWord)
+//o/p:[
+//   'h', 'e', 'l', 'l',
+//   'o', ' ', 'w', 'o',
+//   'r', 'l', 'd'
+// ]
+
+const word1 = "hello world";
+const splitWord1 = word.split(" ");
+console.log(splitWord1)             //output: [ 'hello', 'world' ]
+
+// 54. How do you join an array into a string in JavaScript?
+const fruits = ["apple", "banana", "cherry"];
+const fruitString = fruits.join(" , ");
+console.log(fruitString);          //output: apple , banana , cherry
+
+// 55. What is Math object in JavaScript?
+//The Math object in JavaScript is a built-in object that provides a set of mathematical functions
+
+// 56. How do you round a number in JavaScript?
+console.log(Math.round(4.2)) // 5
+
+// 57. How do you find the maximum and minimum values in an array?
+const values = [1,2,3,4];
+const maxValue = Math.max(...values);
+console.log(maxValue); // 4
+const minValue = Math.min(...values);
+console.log(minValue); // 1
+
+// 58. How do you sort an array in JavaScript?
+// Sorting an Array of Strings : The sort() method sorts an array of strings alphabetically by default.
+const fruit = ["banana", "apple", "cherry"];
+fruits.sort();
+console.log(fruit); // Output: ["apple", "banana", "cherry"]
+
+const numberes = [10, 1, 21, 2];
+numbers.sort();
+console.log(numberes); // Output: [1, 10, 2, 21]
+
+const numbers1 = [10, 1, 21, 2];
+numbers.sort((a, b) => a - b);
+console.log(numbers1);  // Output: [1, 2, 10, 21]
+
+// 59. How do you reverse an array in JavaScript?
+const originalArray = [1, 2, 3, 4, 5];
+const reversedArray = [...originalArray].reverse();
+console.log(originalArray);    // Output: [1, 2, 3, 4, 5]
+console.log(reversedArray);    // Output: [5, 4, 3, 2, 1]
+
+// 60. How do you find an element in an array?
+//find(): Returns the first element that matches a condition.
+const a = [1, 2, 3, 4, 5];
+const found = a.find(num => num > 3);
+console.log(found); // Output: 4
+
+// filter(): Returns an array of all elements that match a condition.
+const N = [1, 2, 3, 4, 5];
+const filtered = N.filter(num => num > 3);
+console.log(filtered); // Output: [4, 5]
+
+// indexOf(): Finds the index of the first occurrence of an element.
+const f = ["apple", "banana", "cherry"];
+const index = f.indexOf("banana");
+console.log(index); // Output: 1
+console.log(f[index]); // Output: "banana"
+
+// includes(): Checks if an element exists in the array.
+const z = ["apple", "banana", "cherry"];
+const hasBanana = z.includes("banana");
+console.log(hasBanana); // Output: true
+
+// findIndex(): Returns the index of the first element that matches a condition.
+const n = [1, 2, 3, 4, 5];
+const Index = n.findIndex(num => num > 3);
+console.log(Index); // Output: 3
+console.log(numbers[Index]); // Output: 4
+
+// 61. What is for...in loop?
+// 62. What is for...of loop?
+
+
+// 63. What is an anonymous function in JavaScript?
+//In JavaScript, an anonymous function is a function that does not have a name.
+(function() {
+    console.log("This is an IIFE.");
+})();
+
+const greet = function() {
+    console.log("Hello, world!");
+};
+
+greet(); // Output: Hello, world!
+
+// 64. How do you create a closure in JavaScript?
+
+
+// 65. What is setTimeout function?
+// setTimeout: Schedules a function to be executed after a specified delay.
+setTimeout(() => {
+    console.log("This message appears after 3 seconds");
+}, 3000);
+
+// 66. How do you use setInterval function?
+// 67. How do you clear a timeout in JavaScript?
+// 69. How do you check if a variable is an array?
+// 70. What is the instanceof operator?
+// 72. What is strict mode in JavaScript?
+// 73. How do you use eval in JavaScript?
+// 74. What is the bind method in JavaScript?
+// 75. How do you use call and apply methods?
+// 76. What is an arrow function?
+// 77. How do you use default parameters in JavaScript?
+// 78. What is destructuring in JavaScript?
+// 79. How do you use spread operator in JavaScript?
+// 80. How do you use rest operator in JavaScript?
+// 81. What is document object in JavaScript? 
+// 82. How do you get an element by ID in JavaScript?
+// 83. How do you get elements by class name?
+// 84. How do you get elements by tag name?
+// 85. How do you query an element using a selector?86. What is innerHTML?
+// 87. How do you change the text content of an element?
+// 88. How do you add a class to an element?
+// 89. How do you remove a class from an element?
+// 90. What is event bubbling?
+// 91. What is event capturing?
+// 92. How do you stop event propagation?
+// 93. What is preventDefault method?
+// 94. How do you clone an object in JavaScript?
+// 95. What is the difference between deep copy and shallow copy?
+// 96. How do you merge two objects?
+// 97. How do you merge two arrays?
+// 98. What is RegExp in JavaScript?
+// 99. How do you create a regular expression in JavaScript?
+// 00. How do you test a regular expression in JavaScript?
