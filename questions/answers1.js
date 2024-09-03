@@ -167,10 +167,43 @@ const greeting = `Hello, my name is ${name} and I am ${age} years old.`;
 console.log(greeting); // Outputs: Hello, my name is Alice and I am 25 years old.
 
 // 33. How do you use the map function in JavaScript?
+// The map() function in JavaScript is a powerful and commonly used array method that creates a new array by applying a provided function to each element in the original array. The original array remains unchanged.
+const element = [1, 2, 3, 4, 5];
+const squares = element.map(function(number) {
+    return number * number;
+});
+console.log(squares); // Output: [1, 4, 9, 16, 25]
+
+const users = [
+    { name: 'Alice', age: 25 },
+    { name: 'Bob', age: 30 },
+    { name: 'Charlie', age: 35 }
+];
+const names = users.map(user => user.name);
+console.log(names); // Output: ['Alice', 'Bob', 'Charlie']
+
 // 34. What is the difference between map and forEach?
+
+
+
 // 35. How do you use the filter function in JavaScript?
+// The filter() function in JavaScript is used to create a new array with all the elements that pass a test provided by a callback function. It filters out elements that do not meet the condition specified in the callback function, and only includes elements that return true for the test.
+const numeric = [5, 10, 15, 20, 25];
+const filteredNumbers = numeric.filter(number => number >= 10);
+console.log(filteredNumbers); // Output: [10, 15, 20, 25]
+
 // 36. What is the difference between filter and map?
+// map : Purpose: The map() function is used to create a new array by applying a function to each element of the original array. 
+// filter() : Purpose: The filter() function is used to create a new array containing only the elements that pass a specific test or condition. 
+
 // 37. How do you use the reduce function in JavaScript?
+// The reduce() function in JavaScript is a powerful array method used to reduce an array to a single value by executing a reducer function on each element of the array. 
+const number123 = [1, 2, 3, 4, 5];
+
+const sum = number123.reduce(function(accumulator, currentValue) {
+    return accumulator + currentValue;
+}, 0);
+console.log(sum); // Output: 15
 
 
 // 38. What is typeof operator?
