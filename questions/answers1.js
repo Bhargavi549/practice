@@ -36,7 +36,34 @@
 // --->let and const are the blocked scopes and var is global scope
 // let: inside block defined
 // var: thoughtout the block defined
-// const: let and var we can redeclare but const we cannot 
+// const: let and var we can redeclare but const we cannot
+function letVariable (){
+    let x = 2;
+    if(true){
+        let x = 4;
+        console.log("let scope",x);
+    }
+    console.log(x);
+}
+letVariable()
+ function varVariable(){
+    var y = 1;
+    if(true){
+        var y = 3;
+        console.log(y)
+    }
+    console.log(y);
+ }
+ varVariable()
+
+ const exp = 23456
+ exp = 890
+ console.log(exp);
+
+const s = [1,2,3,4]
+s.push(5)
+console.log(s);
+
 
 //6. How do you create a string in JavaScript?
 // you can create strings using single quotes('') and double quotes("") and templateLiteral(``)
@@ -44,15 +71,18 @@
 //7. What is the difference between == and ===?
 // == ---> it checks only values 
    2=="2"
-// === ---> it checks values and types  
+// === ---> it checks values and types  of the operand
    2==="2"
 
 //9. How do you create an array in JavaScript?
+// multile values stored in single variable.
 const array = [element1, element2, element3];
 const colors = Array.of('red', 'green', 'blue');
 
 //10. How do you access an element in an array?
 //In JavaScript, you can access an element in an array using its index, indexes are starts from 0;
+const persons = ["sai","ali","trini"];
+console.log(persons[0])
 
 // 11. How do you add an element to an array?
 // using push
@@ -105,24 +135,64 @@ let person = {};
 console.log(person.age); // undefined (age property does not exist)
 
 // 20.How do you create a conditional statement in JavaScript?
-// if
+// if: The if statement is used to execute a block of code if a specified condition is true.
+let personage = 18;
+
+if (personage >= 18) {
+    console.log("You are an adult.");
+}
+
 // if...else
+let age3 = 16;
+
+if (age3 >= 18) {
+    console.log("You are an adult.");
+} else {
+    console.log("You are a minor.");
+}
+
 // if...else if...else
+//The else if statement is used to specify a new condition to test if the first condition is false.
+let age1 = 20;
+if (age1 < 13) {
+    console.log("You are a child.");
+} else if (age1 >= 13 && age1 < 18) {
+    console.log("You are a teenager.");
+} else {
+    console.log("You are an adult.");
+}
+
 // switch
-// ternary
+//The switch statement is used to perform different actions based on different conditions. It is often used when you have multiple possible values for a single variable.
+let fruit1 = "apple";
+switch (fruit1) {
+    case "apple":
+        console.log("You selected an apple.");
+        break;
+    case "banana":
+        console.log("You selected a banana.");
+        break;
+    case "orange":
+        console.log("You selected an orange.");
+        break;
+    default:
+        console.log("Unknown fruit.");
+}
 
-
-
-
+// ternary: The ternary operator is a shorthand way of writing an if-else statement.
+let age2 = 20;
+let message = age2 >= 18 ? "You are an adult." : "You are a minor.";
+console.log(message);
+ 
 // 21. How do you create a loop in JavaScript?
 // 22. What is the difference between for, while, and do...while loops?
 // 23. How do you break out of a loop?
 // 24. How do you continue to the next iteration in a loop?
+// 61. What is for...in loop?
+// 62. What is for...of loop?
 
 //25. What is an event in JavaScript? 
 // user interaction, changes in the state of application ex: drag mouse and clicking.
-
-// 26. How do you attach an event handler to an HTML element?
 // 27. What is this keyword in JavaScript?
 
 // 28. How do you use the Date object in JavaScript?
@@ -182,10 +252,6 @@ const users = [
 const names = users.map(user => user.name);
 console.log(names); // Output: ['Alice', 'Bob', 'Charlie']
 
-// 34. What is the difference between map and forEach?
-
-
-
 // 35. How do you use the filter function in JavaScript?
 // The filter() function in JavaScript is used to create a new array with all the elements that pass a test provided by a callback function. It filters out elements that do not meet the condition specified in the callback function, and only includes elements that return true for the test.
 const numeric = [5, 10, 15, 20, 25];
@@ -199,12 +265,10 @@ console.log(filteredNumbers); // Output: [10, 15, 20, 25]
 // 37. How do you use the reduce function in JavaScript?
 // The reduce() function in JavaScript is a powerful array method used to reduce an array to a single value by executing a reducer function on each element of the array. 
 const number123 = [1, 2, 3, 4, 5];
-
 const sum = number123.reduce(function(accumulator, currentValue) {
     return accumulator + currentValue;
 }, 0);
-console.log(sum); // Output: 15
-
+console.log(sum);  // Output: 15
 
 // 38. What is typeof operator?
 //determining the data type of values in JavaScript.
@@ -362,7 +426,17 @@ console.log(jsonObject.name); // "John"
 console.log(jsonObject.age);  // 30
 
 // 50. How do you use localStorage in JavaScript?
+// to store data on the client side.
+//to store data:
+localStorage.setItem('key','value');
+// retrive the data:
+const storage = localStorage.getItem('key');
+console.log(storage);
+
 // 51. What is the difference between localStorage and sessionStorage?
+// both are used for web storages
+// localstorage: even browser  closed also users data stored and responded.
+// sessionStorage:  browser open data will respond if the brower close not responded untill repoen the browser 
 
 // 52. How do you check the length of a string in JavaScript?
 const string = "hello";
@@ -444,10 +518,6 @@ const Index = n.findIndex(num => num > 3);
 console.log(Index); // Output: 3
 console.log(numbers[Index]); // Output: 4
 
-// 61. What is for...in loop?
-// 62. What is for...of loop?
-
-
 // 63. What is an anonymous function in JavaScript?
 //In JavaScript, an anonymous function is a function that does not have a name.
 (function() {
@@ -488,17 +558,15 @@ const intervalId = setInterval(() => {
 // Counter: 5
 // Interval stopped
 
-// 67. How do you clear a timeout in JavaScript?
-
-
 // 69. How do you check if a variable is an array?
 const p = [1, 2, 3, 4, 5];
 const p1 = "Alice";
-console.log(Array.isArray(p)); // Output: true
+console.log(Array.isArray(p));     // Output: true
 console.log(Array.isArray(p1));    // Output: false
 
 // 70. What is the instanceof operator?
-
+//  instanceOf operator in javascript is used to check if an object is an instance of particular contructor or class.
+Object instanceof constructor
 
 // 72. What is strict mode in JavaScript?
 // Strict Mode: A feature in JavaScript that enables a stricter parsing and error handling in your code.
@@ -556,20 +624,17 @@ console.log(first);  // Output: 1
 console.log(second); // Output: 2
 console.log(rest);   // Output: [3, 4, 5]
 
-// 81. What is document object in JavaScript? 
-// 82. How do you get an element by ID in JavaScript?
-// 83. How do you get elements by class name?
-// 84. How do you get elements by tag name?
-// 85. How do you query an element using a selector?86. What is innerHTML?
-// 87. How do you change the text content of an element?
-// 88. How do you add a class to an element?
-// 89. How do you remove a class from an element?
 // 90. What is event bubbling?
 // 91. What is event capturing?
+
 // 92. How do you stop event propagation?
+
 // 93. What is preventDefault method?
+
 // 94. How do you clone an object in JavaScript?
+
 // 95. What is the difference between deep copy and shallow copy?
+
 // 96. How do you merge two objects?
 const person = { name: 'Alice', age: 25 };
 const contact = { email: 'alice@example.com', phone: '123-456-7890' };
