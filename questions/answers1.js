@@ -208,8 +208,6 @@ console.log(randomNumber); // Example: 0.726473893
 
 // 30. What is a callback function?
 // a callback function called at a completion of given task and this privents any blockings another code need to be run in amean time.
-// call back function examle:
-
 
 
 // 31. How do you handle errors in JavaScript?
@@ -529,9 +527,6 @@ const greet = function() {
 };
 greet(); // Output: Hello, world!
 
-// 64. How do you create a closure in JavaScript?
-
-
 // 65. What is setTimeout function?
 // setTimeout: Schedules a function to be executed after a specified delay.
 setTimeout(() => {
@@ -550,7 +545,6 @@ const intervalId = setInterval(() => {
         console.log("Interval stopped");
     }
 }, 1000);
-
 // Counter: 1
 // Counter: 2
 // Counter: 3
