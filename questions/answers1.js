@@ -620,6 +620,7 @@ console.log(rest);   // Output: [3, 4, 5]
 
 // 90. What is event bubbling?
 // 91. What is event capturing?
+//// 7. What is event delegation?
 
 // 92. How do you stop event propagation?
 
