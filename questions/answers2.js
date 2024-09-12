@@ -348,23 +348,186 @@ fetchData();  // Call the async function
 
 // 42. What are Generators in JavaScript?
 // 43. How do you create and use a generator function?
+
 // 44. What is the purpose of the yield keyword?
+// The yield keyword in JavaScript is used within a generator function (function*) to pause its execution and return a value. 
+
 // 45. What is Symbol in JavaScript?
+// In JavaScript, a Symbol is a primitive data type that represents a unique and immutable identifier. 
+const sym1 = Symbol('description');
+const sym2 = Symbol('description');
+console.log(sym1 === sym2);  // false - Each symbol is unique
+
 // 46. How do you use symbols to create private properties?
+// By using symbols as property keys, you can simulate private properties in JavaScript, as they are not exposed through standard iteration or object manipulation methods.
+const _age = Symbol('age');  // "Private" property
+class Person {
+  constructor(name, age) {
+    this.name = name;
+    this[_age] = age;  // Store age using symbol
+  }
+  getAge() {
+    return this[_age];  // Access the private property using the symbol
+  }
+}
+const john = new Person('John', 30);
+console.log(john.name);  // 'John'
+console.log(john.getAge());  // 30
+// Trying to access the "private" property directly:
+console.log(john[_age]);  // 30, but it's not enumerable
+console.log(Object.keys(john));  // ['name'] - Symbol is hidden
+
 // 47. What are iterators in JavaScript?
 // 48. How do you create a custom iterator?
 // 49. What is a Proxy object in JavaScript?
 // 50. How do you use Reflect in JavaScript?
-// 51. What are template literals and tagged templates?
+
 // 52. What is Map and Set in JavaScript?
+// In JavaScript, Map and Set are built-in data structures introduced in ES6 (ECMAScript 2015). They provide more flexibility and functionality compared to traditional objects and arrays.
+//  Map Methods:
+// set(key, value): Adds or updates a key-value pair.
+// get(key): Retrieves the value associated with the key.
+// has(key): Returns true if the key exists, otherwise false.
+// delete(key): Removes a key-value pair.
+// clear(): Removes all key-value pairs.
+// size: Returns the number of key-value pairs in the Map.
+// forEach(callback): Iterates over the key-value pairs. 
+const map = new Map();
+
+// Setting key-value pairs
+map.set('name', 'Alice');
+map.set(42, 'The answer');
+map.set(true, 'Yes');
+
+// Getting values by key
+console.log(map.get('name')); // "Alice"
+console.log(map.get(42)); // "The answer"
+
+// Checking existence of keys
+console.log(map.has(true)); // true
+
+// Iterating over a Map
+map.forEach((value, key) => {
+  console.log(key, value);
+});
+
+// Size of the Map
+console.log(map.size); // 3
+
+// Deleting a key
+map.delete('name');
+
+// Clearing the Map
+map.clear();
+
+//set: A Set is a collection of unique values. Unlike arrays, Sets do not allow duplicate values. The values in a Set can be of any type (primitives, objects, functions).
+const set = new Set();
+
+// Adding values
+set.add(1);
+set.add(2);
+set.add(3);
+set.add(3);  // Duplicate values are ignored
+
+// Checking existence
+console.log(set.has(2)); // true
+console.log(set.has(5)); // false
+
+// Iterating over a Set
+set.forEach(value => {
+  console.log(value);
+});
+
+// Size of the Set
+console.log(set.size); // 3
+
+// Deleting a value
+set.delete(2);
+
+// Clearing the Set
+set.clear();
+
 // 53. How do you use WeakMap and WeakSet?
+//WeakMap: A collection of key-value pairs where the keys are objects, and they can be garbage collected when no longer referenced.
+// WeakSet: A collection of unique objects that can be garbage collected when no longer referenced.
+// A WeakMap is similar to a regular Map, but it only accepts objects as keys, and the keys are "weakly held." This means that if there are no other references to a key object, it can be garbage collected, even if it's stored in the WeakMap.
+let obj1 = { name: 'Object 1' };
+let obj2 = { name: 'Object 2' };
+
+const weakMap = new WeakMap();
+
+// Adding objects as keys
+weakMap.set(obj1, 'Some value');
+weakMap.set(obj2, 'Another value');
+
+// Getting values by key
+console.log(weakMap.get(obj1));  // "Some value"
+
+// Checking existence of a key
+console.log(weakMap.has(obj2));  // true
+
+// Deleting a key
+weakMap.delete(obj1);
+console.log(weakMap.has(obj1));  // false
+
+// If obj2 is dereferenced, it can be garbage collected
+obj2 = null;
+
+// A WeakSet is similar to a regular Set, but it only stores objects (not primitives), and the objects are weakly held. Like WeakMap, if no other references to an object exist, it can be garbage collected.
+let obj11 = { name: 'Object 1' };
+let obj22= { name: 'Object 2' };
+
+const weakSet = new WeakSet();
+
+// Adding objects to the WeakSet
+weakSet.add(obj11);
+weakSet.add(obj22);
+
+// Checking existence of an object
+console.log(weakSet.has(obj11));  // true
+
+// Deleting an object from the WeakSet
+weakSet.delete(obj22);
+console.log(weakSet.has(obj22));  // false
+
+// If obj1 is dereferenced, it can be garbage collected
+obj11 = null;
+
 // 54. What is a Promise.all and how does it work?
+// Promise.all() is useful for performing parallel asynchronous operations.
+// It resolves when all input promises wait for all of them promieses resolved, and returns an array of results.
+// It rejects if any one of the input promises rejects, immediately result will give error.
+const promise1 = Promise.resolve(10);
+const promise2 = Promise.reject('Error in promise2');
+const promise3 = Promise.resolve('Resolved value');
+
+Promise.all([promise1, promise2, promise3])
+  .then((results) => {
+    console.log(results);
+  })
+  .catch((error) => {
+    console.error('One of the promises rejected:', error);  // "One of the promises rejected: Error in promise2"
+  });
+// Use Case: Fetching Data from Multiple APIs
+const fetchData1 = fetch('https://api.example.com/data1');
+const fetchData2 = fetch('https://api.example.com/data2');
+const fetchData3 = fetch('https://api.example.com/data3');
+
+Promise.all([fetchData1, fetchData2, fetchData3])
+  .then((responses) => Promise.all(responses.map(res => res.json())))
+  .then((data) => {
+    console.log(data);  // Logs array of parsed JSON from all 3 responses
+  })
+  .catch((error) => {
+    console.error('One of the fetches failed:', error);
+  });
+
 // 55. How do you use Promise.race?
+// 60. How do you use Promise.allSettled?
 // 56. What are Web Workers in JavaScript?
 // 57. How do you create and use a Web Worker?
 // 58. How does message passing work with Web Workers?
 // 59. What is the difference between synchronous and asynchronous code?
-// 60. How do you use Promise.allSettled?
 // 61. What is memoization in JavaScript?
 // 62. How do you implement memoization in JavaScript?
 // 63. What is a Pure function?
