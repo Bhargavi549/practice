@@ -250,32 +250,102 @@ setTimeout(() => {
 console.log('End');
 
 // 15. How do you create a custom error in JavaScript?
-// 16. What is debouncing and throttling in JavaScript?
-// 17. How do you implement debouncing in JavaScript?
-// 18. How do you implement throttling in JavaScript?
-// 19. What is a prototype in JavaScript?
-// 20. How do you create a prototype chain?
 // 21. What is the difference between call, apply, and bind?
 // 22. What is the difference between function declaration and function expression?
-// 23. How do you use Object.create method?
 // 24. What are ES6 classes in JavaScript?
-// 25. How do you use extends and super keywords in JavaScript?
-// 26. How do you create a singleton in JavaScript?
-// 27. What is typeof vs instanceof?
+
+
 // 28. What is the new keyword in JavaScript?
+// The new keyword in JavaScript is used to create instances of objects from constructor functions or ES6 classes. When you use new with a constructor function or class, it automates the process of creating a new object, binding this to that object, and setting up the inheritance chain. 
+// Creates a New Object: A new, empty object is created.
+function person (name, age){
+  this.name = name,
+  this.age =age
+}
+const person1 = new person("john",20)
+console.log(person1.name)
+
 // 29. What is the difference between Object.keys, Object.values, and Object.entries?
+// Object.keys : Returns an array of keys
+// Object.values : Returns an array of values
+// Object.entries : Returns an array of keys and values.
+const person = {
+  "name":"john",
+  "age":19,
+  "contry":"india"
+}
+const keys = Object.keys(person)    // [ 'name', 'age', 'contry' ]
+console.log(keys)
+
+const person2 = {
+  "name":"john",
+  "age":19,
+  "contry":"india"
+}
+const values = Object.values(person2)
+console.log(values)                    // [ 'john', 19, 'india' ]
+
+const person3 = {
+  "name":"john",
+  "age":19,
+  "contry":"india"
+}
+const entries = Object.entries(person3)
+console.log(entries)                       // [ [ 'name', 'john' ], [ 'age', 19 ], [ 'contry', 'india' ] ]
+
 // 30. How do you freeze an object in JavaScript?
-// 31. What is a mixin in JavaScript?
-// 32. How do you create a module in JavaScript?
-// 33. What are import and export in JavaScript?
-// 34. How do you use dynamic imports in JavaScript?
+// Prevents adding new properties: You can’t add new properties to the object.
+const person = {
+  name: 'John',
+  age: 30
+};
+Object.freeze(person);
+person.age = 35; // No effect, object is frozen
+person.city = 'New York'; // No effect, can't add new properties
+console.log(person);                       // Output: { name: 'John', age: 30 }
+
 // 35. What is the fetch API?
 // 36. How do you handle HTTP requests using fetch?
+
 // 37. What are cookies in JavaScript?
 // 38. How do you set and get cookies in JavaScript?
 // 39. What is the document.cookie API?
+
 // 40. What is CORS, and how do you handle it in JavaScript?
+// cors is a middleware function ,it access users data to unautherized access
+//cors: cross origin resource sharing is abrowser security feature is a security mechanism implemented by web browsers that allows or restricts web applications running at one origin (domain) to different origin.
+// To handle CORS, you must configure the server to include appropriate headers (Access-Control-Allow-Origin, Access-Control-Allow-Methods, etc.).
+const express = require('express');
+const cors = require('cors');
+const app = express();
+
+app.use(cors()); // Allow all origins
+// Or, for specific origins:
+// app.use(cors({ origin: 'http://example.com' }));
+
+app.get('/',req,res=>{
+  res.json({message: 'hello world'})
+})
+app.listen(5000,()=>{console.log('server running on port 5000')})
+
 // 41. How do you use async and await with fetch?
+async function fetchData() {
+  try {
+    const response = await fetch('https://api.example.com/data');
+    
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    const data = await response.json();  // Parse the JSON response
+    console.log(data);                   // Use the fetched data
+  } catch (error) {
+    console.error('Error fetching data:', error);  // Handle errors
+  }
+}
+
+fetchData();  // Call the async function
+
 // 42. What are Generators in JavaScript?
 // 43. How do you create and use a generator function?
 // 44. What is the purpose of the yield keyword?
