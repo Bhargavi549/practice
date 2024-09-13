@@ -523,17 +523,127 @@ Promise.all([fetchData1, fetchData2, fetchData3])
   });
 
 // 55. How do you use Promise.race?
+//  implement timeouts or to handle the fastest result among multiple asynchronous tasks.
+const promise21 = new Promise((resolve) => setTimeout(resolve, 100, 'First Promise'));
+const promise32 = new Promise((resolve) => setTimeout(resolve, 500, 'Second Promise'));
+
+Promise.race([promise21, promise32])
+  .then((result) => {
+    console.log(result);  // "First Promise" (the first one to settle)
+  })
+  .catch((error) => {
+    console.error('One of the promises rejected:', error);
+  });
+
+
 // 60. How do you use Promise.allSettled?
+//  using promise.allsettled() It waits for all promises to settle (resolve or reject) before returning.
+//if all promises resolves it will gives the values if any one of the promise rejects wait for all promises to settled particular rejection only shows error remaining promises gives the result value.
+const promise12 = Promise.resolve('First Promise');
+const promise23 = Promise.reject('Error in Second Promise');
+const promise34 = new Promise((resolve) => setTimeout(resolve, 1000, 'Third Promise'));
+
+Promise.allSettled([promise12, promise23, promise34])
+  .then((results) => {
+    console.log(results);
+    /*
+    Output:
+    [
+      { status: 'fulfilled', value: 'First Promise' },
+      { status: 'rejected', reason: 'Error in Second Promise' },
+      { status: 'fulfilled', value: 'Third Promise' }
+    ]
+    */
+  });
+
 // 56. What are Web Workers in JavaScript?
 // 57. How do you create and use a Web Worker?
 // 58. How does message passing work with Web Workers?
+
+
 // 59. What is the difference between synchronous and asynchronous code?
+// syncronous : js is a syncronous single thresded one thing can do at a time, it is ablocking function 
+// asyncronous : it is an non blocking function, will not wait for the server response, another code need to be run in mean time.
+//syncronous:
+console.log('Task 1');
+for (let i = 0; i < 1e9; i++) {}  // Blocking loop
+console.log('Task 2');  // Only runs after the loop completes
+ // asyncronous:
+ console.log('Task 1');
+const promise = new Promise((resolve, reject) => {
+  setTimeout(() => resolve('Task 2 (after 2 seconds)'), 2000);
+});
+promise.then((result) => {
+  console.log(result);
+});
+console.log('Task 3');  // Runs immediately after Task 1
+
 // 61. What is memoization in JavaScript?
 // 62. How do you implement memoization in JavaScript?
 // 63. What is a Pure function?
+// A pure function is a function that:
+// Always returns the same result for the same input.
+// Has no side effects — it does not modify external state or variables.
+function add(a, b) {
+  return a + b;
+}
+console.log(add(2, 3));  // 5
+//Same Input, Same Output: multiply(2, 3) will always return 6.
+//No Side Effects: The function doesn't modify any external state.
+let total = 0;
+function addToTotal(value) {
+  total += value;  // Modifies the external variable `total`
+  return total;
+}
+console.log(addToTotal(5));  // 5
+console.log(addToTotal(3));  // 8 (depends on previous value of `total`)
+
 // 64. How do you handle deep cloning of objects?
+// In JavaScript, deep cloning refers to creating a copy of an object where all nested objects (and arrays) are also fully copied, rather than just copying references to the original nested objects.
+// One of the simplest ways to deep clone an object is by serializing it to a JSON string and then deserializing it back to an object using JSON.stringify() and JSON.parse().
+const original = {
+  name: "John",
+  address: {
+    city: "New York",
+    zip: 10001
+  }
+};
+const deepClone = JSON.parse(JSON.stringify(original));
+deepClone.address.city = "Los Angeles";
+console.log(original.address.city);  // "New York" - original remains unchanged
+console.log(deepClone.address.city);  // "Los Angeles" - deepClone is modified independently
+
 // 65. What is functional programming in JavaScript?
+// JavaScript provides built-in array methods that align with functional programming principles, such as map, filter, reduce, and forEach.
+// 1. map():
+// Transforms each element in an array based on the given function and returns a new array.do not changes original array.
+const numbers = [1, 2, 3, 4];
+const doubled = numbers.map(n => n * 2);
+console.log(doubled);  // [2, 4, 6, 8]
+// filter():
+// Returns a new array containing elements that match a given condition.
+const number = [1, 2, 3, 4, 5];
+const evens = number.filter(n => n % 2 === 0);
+console.log(evens);  // [2, 4]
+// 3. reduce():
+// Combines all elements in an array into a single value by applying a function.
+const num = [1, 2, 3, 4];
+const sum = num.reduce((acc, n) => acc + n, 0);
+console.log(sum);  // 10
+
 // 66. How do you use currying in JavaScript?
+// By breaking functions down into smaller pieces, currying makes it easy to reuse partially applied functions.
+// curring is a technique in functional programming 
+// Currying in JavaScript transforms a function that takes multiple arguments into a series of functions, each taking one argument at a time.
+function greet(greeting) {
+  return function(name) {
+    return `${greeting}, ${name}!`;
+  };
+}
+const sayHello = greet("Hello");
+console.log(sayHello("Alice"));  // "Hello, Alice!"
+console.log(sayHello("Bob"));    // "Hello, Bob!"
+
 // 67. What is the bind method used for?
 // 68. How does the apply method differ from call?
 // 69. What is JSONP, and how does it differ from fetch?
