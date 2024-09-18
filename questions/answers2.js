@@ -646,5 +646,4 @@ console.log(sayHello("Bob"));    // "Hello, Bob!"
 
 // 67. What is the bind method used for?
 // 68. How does the apply method differ from call?
-// 69. What is JSONP, and how does it differ from fetch?
 // 70. How do you work with binary data in JavaScript?

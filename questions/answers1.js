@@ -193,6 +193,7 @@ console.log(message);
 
 //25. What is an event in JavaScript? 
 // user interaction, changes in the state of application ex: drag mouse and clicking.
+
 // 27. What is this keyword in JavaScript?
 
 // 28. How do you use the Date object in JavaScript?
@@ -228,14 +229,14 @@ divideNumbers(10, 2); // Outputs: Result: 5
 divideNumbers(10, 0); // Outputs: Error: Cannot divide by zero
 
 // 32. What are template literals?
-//Template literals are a feature in JavaScript introduced in ES6,instead of single or double quotes and offer several advantages over regular strings 
+// template literals are using(``) it allows multiline strings using ${} we can write your expressions.
 const name = 'Alice';
 const age = 25;
 const greeting = `Hello, my name is ${name} and I am ${age} years old.`;
 console.log(greeting); // Outputs: Hello, my name is Alice and I am 25 years old.
 
 // 33. How do you use the map function in JavaScript?
-// The map() function in JavaScript is a powerful and commonly used array method that creates a new array by applying a provided function to each element in the original array. The original array remains unchanged.
+// creates a new array by using the existing one. modify each element of the array
 const element = [1, 2, 3, 4, 5];
 const squares = element.map(function(number) {
     return number * number;
@@ -250,8 +251,15 @@ const users = [
 const names = users.map(user => user.name);
 console.log(names); // Output: ['Alice', 'Bob', 'Charlie']
 
+//34. What is the difference between map and forEach?
+// both are same these two methods are used for modification and iteration
+// usinging for ech we will get list of numbers not in array elements
+const res = element.forEach((num)=>num*2);
+console.log(res); // 1,4,9,16,25
+
 // 35. How do you use the filter function in JavaScript?
-// The filter() function in JavaScript is used to create a new array with all the elements that pass a test provided by a callback function. It filters out elements that do not meet the condition specified in the callback function, and only includes elements that return true for the test.
+// The filter() function in JavaScript is used to create a new array with all the elements that pass a test provided by a callback function. 
+// It filters out elements that do not meet the condition specified in the callback function, and only includes elements that return true for the test.
 const numeric = [5, 10, 15, 20, 25];
 const filteredNumbers = numeric.filter(number => number >= 10);
 console.log(filteredNumbers); // Output: [10, 15, 20, 25]
@@ -514,7 +522,7 @@ console.log(hasBanana); // Output: true
 const n = [1, 2, 3, 4, 5];
 const Index = n.findIndex(num => num > 3);
 console.log(Index); // Output: 3
-console.log(numbers[Index]); // Output: 4
+console.log(n[Index]); // Output: 4
 
 // 63. What is an anonymous function in JavaScript?
 //In JavaScript, an anonymous function is a function that does not have a name.
@@ -532,6 +540,14 @@ greet(); // Output: Hello, world!
 setTimeout(() => {
     console.log("This message appears after 3 seconds");
 }, 3000);
+
+//cleartimeout:
+const timmer = setTimeout(endFunction,3000);
+console.log("start");
+clearTimeout(timmer);
+function endFunction(){
+    console.log("end");
+}
 
 // 66. How do you use setInterval function?
 // function: The function to be executed repeatedly.
@@ -578,7 +594,37 @@ const result = eval(code);
 console.log(result); // Output: 4
 
 // 74. What is the bind method in JavaScript?
+// it gives the copy and invoke later.
+// const boundFunction = function.bind(thisArg, arg1, arg2, ...);
+
 // 75. How do you use call and apply methods?
+// Syntax: function.call(thisArg, arg1, arg2, ...)
+// The call() method calls a function with a given this value and arguments provided individually.
+const printMyName = printFullName.bind(name1, "kurnool"); 
+console.log(printMyName);
+// Syntax: function.apply(thisArg, [argsArray])
+// The apply() method is similar to call(), but it takes the function arguments as an array.
+let name1 = {
+    firstname: "bhargavi",
+    lastname:"dora",
+ //    printFullName: function(){
+ //     console.log(this.firstname + " " + this.lastname)
+ //    }
+ }
+ //name1.printFullName();
+ let  printFullName = function(town){
+         console.log(this.firstname + " " + this.lastname+ " , " + town)
+     }
+ // function borrowing    
+ printFullName.call(name1, "kurnool");   // call method we can pass aruguments camma seperated 
+
+ let name2 = {
+     firstname: "virat",
+     lastname: "kohli",
+ }
+ //names.printFullName.call(names2)
+ printFullName.call(name2,"nellore")
+ printFullName.apply(name2,["nellore"]) // apply we can pass arguments using [] array list
 
 // 76. What is an arrow function?
 // shortest syntex, code should be clean and clear.
@@ -586,6 +632,10 @@ const add = (a, b) => a + b;
 console.log(add(2, 3)); // Output: 5
 
 // 77. How do you use default parameters in JavaScript?
+function myFn(name,age=16){
+    console.log(`hi ${name} what is your${age}`)
+}
+console.log(myFn("sai"));
 
 // 78. What is destructuring in JavaScript?
 //Array destructuring allows you to unpack values from arrays.
@@ -627,8 +677,24 @@ console.log(rest);   // Output: [3, 4, 5]
 // 93. What is preventDefault method?
 
 // 94. How do you clone an object in JavaScript?
+// to copy the objects using spread operator and Object.assign({})
 
 // 95. What is the difference between deep copy and shallow copy?
+const original = { name: 'John', address: { city: 'New York' } };
+// Create a shallow copy using Object.assign or spread operator
+const shallowCopy = { ...original };
+// Modify the nested object
+shallowCopy.address.city = 'Los Angeles';
+console.log(original.address.city); // Output: 'Los Angeles'
+
+const original1 = { name: 'John', address: { city: 'New York' } };
+
+// Create a deep copy using JSON methods
+const deepCopy = JSON.parse(JSON.stringify(original1));
+// Modify the nested object
+deepCopy.address.city = 'Los Angeles';
+console.log(original1.address.city); // Output: 'New York'
+
 
 // 96. How do you merge two objects?
 const person = { name: 'Alice', age: 25 };
