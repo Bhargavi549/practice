@@ -1,0 +1,39 @@
+1. What is software testing?
+
+software testing is verifying, validating software applications meets specified requirements and functionality.
+means will test the application how it looks with UI point of view, and test the functionality how it works with given requirements.
+
+various type of testing
+manual testing -> testet manually test the scenarios and ui functionality
+automation testing -> tester will test with autoamtation tools with repetaedy doing again once we can set the automation using automated tools we can test again and again easily but in manual we have test every step again and again manually, 
+unit testing -> in this we can test induvisual components or modules we can say
+functional testing -> we can test the application functionality with the given requirements how its working in our applications
+Non-functional testing -> in these we can test perfomance related, scalability, security related 
+eg: we can test with false data for api how its workging, if we given wrong payload it should not give the response it should throw appropriate error,
+	we can hit api 100times at a time and we can test how it perfome on this scenario etc..
+integration testing -> once we done with induvisual components, we can test entire application related to that modules
+regresstion testing ->  whatever the new changes will come it should not effect the old changes, it should break existing flow.
+
+2. Differentiate between functional and non-functional testing.
+functional testing -> we can test the application functionality with the given requirements how its working in our applications
+Non-functional testing -> in these we can test perfomance related, scalability, security related 
+eg: we can test with false data for api how its workging, if we given wrong payload it should not give the response it should throw appropriate error,
+	we can hit api 100times at a time and we can test how it perfome on this scenario etc..
+
+3. What is the difference between verification and validation?
+verification: while develpoing will do these kind of testing -> like in feature branch testing
+validation: after developement will check the requiremnts meets the given requirements of the user/client -> after code merged with master branch testing
+
+4. What are the different levels of testing?
+unit testing -> induvisual components/tickets while developing
+integration testing -> all modules that reacently did changes
+system testing, -> testing whole applciation
+acceptance testing -> QA, end user, before releasing like beta testing
+
+5. What is a test case?
+test case is like steps to to test the functionality -> example login -> will enter username, password then will click on login button 
+in automation -> goto the login page
+		-> enter user name
+		-> enter password
+		-> click on login button etc...
+username/password will give some test data
