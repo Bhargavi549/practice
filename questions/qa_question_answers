@@ -1,28 +1,31 @@
 1. What is software testing?
-
-software testing is verifying, validating software applications meets specified requirements and functionality.
-means will test the application how it looks with UI point of view, and test the functionality how it works with given requirements.
+software testing is verifying, validating software applications as per user/client requirements.
+identify any defects, errors, or missing requirements 
+its an example, you can say how you want but it should be relatabe
+eg: means will test the application how it looks with UI point of view, and test the functionality how it works with given requirements.
 
 various type of testing
-manual testing -> testet manually test the scenarios and ui functionality
-automation testing -> tester will test with autoamtation tools with repetaedy doing again once we can set the automation using automated tools we can test again and again easily but in manual we have test every step again and again manually, 
+Manual Testing: Performed by testers manually without using automation tools.
+Automated Testing: Uses scripts and software tools to run tests automatically.
+ in manual teste needs test every time manually, with automation once we setup the test features we can run with automation tool automatically 
 unit testing -> in this we can test induvisual components or modules we can say
-functional testing -> we can test the application functionality with the given requirements how its working in our applications
+functional testing -> we can test the application functionality, feature, business logic how its working with the given requirements our applications
 Non-functional testing -> in these we can test perfomance related, scalability, security related 
 eg: we can test with false data for api how its workging, if we given wrong payload it should not give the response it should throw appropriate error,
 	we can hit api 100times at a time and we can test how it perfome on this scenario etc..
+	Load testing: Check if the website can handle 1000 users simultaneously.
+	Security testing: Ensure that unauthorized users cannot access sensitive data.
+
 integration testing -> once we done with induvisual components, we can test entire application related to that modules
 regresstion testing ->  whatever the new changes will come it should not effect the old changes, it should break existing flow.
 
 2. Differentiate between functional and non-functional testing.
-functional testing -> we can test the application functionality with the given requirements how its working in our applications
-Non-functional testing -> in these we can test perfomance related, scalability, security related 
-eg: we can test with false data for api how its workging, if we given wrong payload it should not give the response it should throw appropriate error,
-	we can hit api 100times at a time and we can test how it perfome on this scenario etc..
+same answer the above
 
 3. What is the difference between verification and validation?
-verification: while develpoing will do these kind of testing -> like in feature branch testing
-validation: after developement will check the requiremnts meets the given requirements of the user/client -> after code merged with master branch testing
+verification: Verification is the process of evaluating work products (documents, design, code, etc.) to ensure that they are built according to the specifications and requirements.
+eg: 
+validation: Validation is the process of testing the actual software to ensure that it meets the user’s needs and that it functions correctly in the real world.
 
 4. What are the different levels of testing?
 unit testing -> induvisual components/tickets while developing
@@ -36,4 +39,46 @@ in automation -> goto the login page
 		-> enter user name
 		-> enter password
 		-> click on login button etc...
-username/password will give some test data
+	username/password will give some test data
+6. What are black-box and white-box testing?
+black-box:  Black-box testing focuses on testing the software’s functionality without knowing or needing to see the internal code or structure.
+eg: Testing the login function by entering usernames and passwords,
+	Checking if a shopping cart correctly adds or removes items.
+	balance deduct or not 
+white-box:  White-box testing focuses on testing the internal workings of the software, including its code, structure, and logic.
+eg: Testing specific functions or loops in the code.
+	Checking if all possible paths through the code are covered.
+like negative testing by giving wrong username/password
+	after adding the items -> total amount is correct or not by adding and removing again and again
+7.Describe black-box testing techniques.
+in details no need but you can say 
+we can test by giving correct data, 
+white box testing:
+we can test for negative scenrios for wrong inputs
+8. regression testing
+ testing the previously developed and tested software still works correctly after recent changes.
+
+9. What is a test plan and what does it include?
+A test plan is a document that outlines the overall strategy and approach for testing a software application. It guides the testing process to ensure that all necessary aspects are covered.
+
+example: 
+Test Objectives: The goals of the testing (e.g., finding bugs, ensuring functionality).
+Scope of Testing: What features or areas will be tested and what won't be.
+Test Strategy: The approach, methods, and types of testing (e.g., manual, automated, functional).
+short answer is a test plan outlines what, how, and when testing will be done to ensure quality software.
+10. what is test case
+A test case is a specific set of actions, inputs, conditions, and expected results used to verify that a particular function or feature of a software application works correctly. Each test case is designed to check a specific behavior or aspect of the system.
+like how we can write test case for that scenario
+11. Explain defect life cycle.
+like its a new bug, re opened, fixed, closed , deployed something like
+12.How do you prioritize and assign severity to defects?
+will go with prioritze first
+will check high priotiy then medium priority, low priority bugs 
+13.How would you approach testing a new feature?
+understanding the requirement, 
+will create a test plan -> means how we can test will get an rough idea
+14. What is cross-browser testing?
+will test that in different browsers and devices(mobile, tablet, desktop)
+
+15. Describe a situation where you found a critical bug just before release.
+write answer for this 
