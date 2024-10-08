@@ -45,6 +45,22 @@ try {
 }
 
 
+const fetchdata = new Promise((resolve,reject)=>{
+  let x = true
+  if(x){
+    resolve('success');
+  }
+  else {
+    reject('fail');
+  }
+})
+fetchdata.then((result)=>{
+ console.log(result);
+}).catch((err)=>{
+  console.log(err);
+})
+
+
 
 // const arr = [5, 2, 3, 1]
 

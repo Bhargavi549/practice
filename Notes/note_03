@@ -1,33 +1,217 @@
-// let, var, const 
 
-// blocked scope : variable accesesed inside the block is called blocked scope.
 
-// let: let is an blocked scope variable.
-// var: var is an global scope thought the function declared.
-// onces declare variable using let and var we can reassign, using const we can not re assign.
+let y = 2;
+y=3;
+console.log(y);
 
-function varScope (){
-    var a = 1;
-    if(true){
-        var a = 3;
-        console.log(a);
-    }
-    console.log(a);
+var y1 = 3;
+y1 = 4;
+console.log(y1);
+
+const z= 5678;
+console.log(z);
+
+const person = ["apple","mango", "banana"];
+//person.push("grap")
+person.pop();
+console.log(person);
+
+function add(a,b){
+    let result = a+b;
+    console.log(result);
 }
-varScope();
+add(2,3)
 
-
-function letScope(){
-    let a=2;
-    if(true){
-        let a= 1;
-        console.log(a);
-    }
-    console.log(a);
+const object = {
+    name: "alice",
+    age:12
 }
-letScope();
+object.no = 345678;
+const obj = JSON.stringify(object);
+console.log(obj);
+console.log(object["name"]);
+console.log(object.no);
 
-const x = 20;
+let x;
 console.log(x);
-x=30;   // we con't re assign using const
-console.log(x);
+
+const now = new Date();
+console.log(now);
+
+sucess = false;
+checking = true;
+if(sucess){
+    console.log("success");
+}else if(checking){
+    console.log("checking");
+}else {
+    console.log("fail");
+}
+
+const sample = (a,b) => a*b;
+console.log(sample(2,3));
+
+function multiple(a,b){
+    try {
+        if(b===0){
+            throw new Error("can not dividive by zero");
+        }
+       const result = a*b;
+       console.log(result); 
+    } catch (error) {
+        console.log(error.message)
+    }
+}
+multiple(2,0);
+
+let a = 3;
+let b = 6;
+const result = `adding the a and b ${a+b}`;
+console.log(result);
+
+// map(): it creates a new array by calling the function of every element in original array.
+const array = [1,2,3,4,5];
+const response = array.map((item)=>item*item);
+console.log(response);
+
+const employee = [
+    {name:"a",age:12},
+    {name:"b", age:13}
+]
+const res2 = employee.map((item)=>item.name);
+console.log(res2);
+
+//forEach(): logic is same like map but we will get list of numbers not in array.
+const array1 = [1,2,3,4,5];
+array1.forEach((e)=>console.log(e*2));
+
+// filter(): based on the condition it filters the all elemets in an array
+const res1 = array.filter((item)=>item >= 4);
+console.log(res1);
+
+// find(): it check the 1st element on the array
+const res4 = array.find((item)=>item >= 3);
+console.log(res4);
+
+// adding all the values into a single value
+const res3 = array.reduce((acc,value)=> acc+value);
+console.log(res3);
+
+let X = typeof(2);
+console.log(X);
+
+const str = "32";
+//const num = Number(str);
+const num = parseInt(str);
+console.log(num);
+
+
+const num1 = 32;
+const str1 = num1.toString();
+// + , string
+console.log(str1);
+
+let value = 0/0
+console.log(value);
+
+let variable = isNaN("567");
+console.log(variable);
+
+const string = ["apple","banana"];
+const string1 = "grap"
+const strlength = string[0].length;
+const strsplit = string[0].split("")
+const joinsplit = string.join();
+console.log(strlength);
+console.log(strsplit);
+console.log(joinsplit);
+
+const values = [4,7,8,9]
+const maxvalue = Math.max(...values);
+console.log(maxvalue);
+const minValue = Math.min(...values);
+console.log(minValue); 
+const reverseValue = [...values].reverse();
+console.log(reverseValue);
+
+const sortArray = [4,1,5,6];
+sortArray.sort((a,b)=>a-b);
+console.log(sortArray);
+
+setTimeout(()=>{
+    console.log("timeout.....")
+},2000);
+
+const timmer = setTimeout(endFunction,3000);
+console.log("start");
+clearTimeout(timmer);
+function endFunction(){
+    console.log("end");
+}
+
+let counter = 0;
+const intervel = setInterval(()=>{
+   counter++
+   console.log(counter);
+   if(counter>=5){
+    clearInterval(intervel);
+   }
+},1000)
+
+const p = [1,2,3,4,5];
+const p1 = "abc";
+console.log(Array.isArray(p));
+
+const numbers = [1,2,3];
+const [one,two,three]= numbers
+console.log(two,three)
+
+const obj1 = {
+   name:"a",
+   age:56
+}
+const {name,age}= obj1;
+console.log(name);
+
+const element = [1,2,3,4,5];
+const copyElement = [...element];
+console.log(copyElement);
+
+const[first,second,...rest]= element;
+console.log(first,rest);
+
+const user = {name:"abc",age:20};
+const contact = {phno:6780987}
+const details = {...user,...contact};
+console.log(details);
+
+function myFn(name,age=16){
+    console.log(`this is ${name} my age is${age}`)
+}
+myFn("sai");
+
+let names = {
+   firstname: "bhargavi",
+   lastname:"dora",
+//    printFullName: function(){
+//     console.log(this.firstname + " " + this.lastname)
+//    }
+}
+//names.printFullName();
+
+let  printFullName = function(town){
+        console.log(this.firstname + " " + this.lastname+ " , " + town)
+    }
+// function borrowing    
+printFullName.call(names, "kurnool");   // call method we can pass aruguments camma seperated 
+
+let names2 = {
+    firstname: "virat",
+    lastname: "kohli",
+}
+//names.printFullName.call(names2)
+printFullName.call(names2,"nellore")
+printFullName.apply(names2,["nellore"]) // apply we can pass arguments using [] array list
+
+const printMyName = printFullName.bind(names, "kurnool"); 
+console.log(printMyName);
