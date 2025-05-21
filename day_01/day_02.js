@@ -50,12 +50,29 @@ function secondLargestNumber (arr){
 }
 console.log(secondLargestNumber(numbers))
 
+
 //reverse of a string:
 let text = "bhargavi";
 function reveseString(str){
     return str.split('').reverse().join('');
 }
 console.log(reveseString(text));
+
+// reverse array without using reverse keyword
+function reverseString(arr){
+    let reversed = [];
+    for(i=arr.length-1;i>=0;i--){
+        reversed.push(arr[i]);
+    }
+    return reversed;
+}
+console.log(reverseString([1,2,3,4,5]));
+
+//using reverse
+const arr1 = [1, 2, 3, 4, 5];
+const reversedArr = arr1.reverse();
+
+console.log(reversedArr);
 
 //find missing numbers:
 const number = [1,2,3,4,6,7];

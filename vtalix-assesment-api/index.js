@@ -23,3 +23,17 @@ const initiaization = async()=>{
     })
 }
 initiaization();
+
+// const express = require('express');
+// const dotenv = require('dotenv');
+// const app = express();
+// const userRoutes = require('./src/routes/router');
+
+// dotenv.config();
+// app.use(express.json());
+// app.use('',userRoutes);
+
+// const PORT = 8080;
+// app.listen(PORT,()=>{
+//     console.log(`server running on ${PORT}`)
+// })
